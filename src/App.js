@@ -22,6 +22,7 @@ function App() {
 				<LightLeaks />
 				<CinematicCursor />
 				<Router>
+					<div className="relative z-10">
 					<ScrollToTop />
 					<AppHeader />
 					<Suspense fallback={""}>
@@ -38,6 +39,7 @@ function App() {
 						</Routes>
 					</Suspense>
 					<AppFooter />
+					</div>
 				</Router>
 				<UseScrollToTop />
 			</div>

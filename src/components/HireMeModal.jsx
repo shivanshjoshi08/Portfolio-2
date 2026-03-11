@@ -1,7 +1,13 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { motion } from 'framer-motion';
-import { FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiX, FiCheck, FiAlertCircle, FiLoader } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
+
+// ⚠️ REPLACE THESE with your actual EmailJS credentials from https://www.emailjs.com/
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
 const selectOptions = [
 	'Wedding Video',
@@ -12,6 +18,16 @@ const selectOptions = [
 ];
 
 const HireMeModal = ({ onClose, onRequest }) => {
+	const formRef = useRef(null);
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		subject: selectOptions[0],
+		message: '',
+	});
+	const [status, setStatus] = useState('idle');
+	const [errorMsg, setErrorMsg] = useState('');
+
 	// Close on ESC key
 	useEffect(() => {
 		const handleKeyDown = (e) => {
@@ -23,126 +39,327 @@ const HireMeModal = ({ onClose, onRequest }) => {
 
 	// Prevent background scrolling while modal is open
 	useEffect(() => {
-		document.documentElement.classList.add('overflow-y-hidden');
-		return () => document.documentElement.classList.remove('overflow-y-hidden');
+		const originalOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		return () => {
+			document.body.style.overflow = originalOverflow;
+		};
 	}, []);
 
-	// Handle backdrop click — close only if clicking directly on the overlay
-	const handleBackdropClick = useCallback((e) => {
-		if (e.target === e.currentTarget) {
-			onClose();
-		}
-	}, [onClose]);
-
-	return createPortal(
-		<div
-			className="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4"
-			onClick={handleBackdropClick}
-			style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-		>
-			{/* Modal Content */}
-			<motion.div
-				initial={{ opacity: 0, scale: 0.95, y: 20 }}
-				animate={{ opacity: 1, scale: 1, y: 0 }}
-				exit={{ opacity: 0, scale: 0.95, y: 20 }}
-				transition={{ duration: 0.25, ease: 'easeOut' }}
-				className="font-general-medium modal relative w-full max-w-md xl:max-w-xl lg:max-w-xl md:max-w-xl bg-secondary-light dark:bg-primary-dark shadow-lg flex flex-col rounded-xl overflow-hidden max-h-[90vh]"
-			>
-				<div className="modal-header shrink-0 flex justify-between gap-10 p-5 border-b border-ternary-light dark:border-ternary-dark">
-					<h5 className="text-gray-900 dark:text-primary-light text-xl">
-						What project can I help you with?
-					</h5>
-					<button
-						onClick={onClose}
-						className="px-4 font-bold text-gray-900 dark:text-primary-light hover:text-accent"
-					>
-						<FiX className="text-3xl" />
-					</button>
-				</div>
-				<div className="modal-body p-5 w-full overflow-y-auto">
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-						}}
-						className="max-w-xl m-4 text-left"
-					>
-						<div>
-							<input
-								className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
-								id="name"
-								name="name"
-								type="text"
-								required=""
-								placeholder="Name"
-								aria-label="Name"
-							/>
-						</div>
-						<div className="mt-5">
-							<input
-								className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
-								id="email"
-								name="email"
-								type="text"
-								required=""
-								placeholder="Email"
-								aria-label="Email"
-							/>
-						</div>
-						<div className="mt-5">
-							<select
-								className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
-								id="subject"
-								name="subject"
-								type="text"
-								required=""
-								aria-label="Project Category"
-							>
-								{selectOptions.map((option) => (
-									<option className="text-normal sm:text-md" key={option}>
-										{option}
-									</option>
-								))}
-							</select>
-						</div>
-
-						<div className="mt-5">
-							<textarea
-								className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
-								id="message"
-								name="message"
-								cols="14"
-								rows="6"
-								aria-label="Details"
-								placeholder="Tell me about your project..."
-							></textarea>
-						</div>
-
-						<div className="mt-6 pb-4 sm:pb-1">
-							<span
-								onClick={onClose}
-								type="submit"
-								className="btn-accent px-6 py-2.5 rounded-lg cursor-pointer inline-block"
-								aria-label="Submit Request"
-							>
-								Send Request
-							</span>
-						</div>
-					</form>
-				</div>
-				<div className="modal-footer shrink-0 mt-2 sm:mt-0 py-5 px-8 border-t border-ternary-light dark:border-ternary-dark text-right">
-					<span
-						onClick={onClose}
-						type="button"
-						className="px-6 py-2 bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-ternary-dark dark:text-secondary-light dark:hover:bg-secondary-dark rounded-lg cursor-pointer duration-300 inline-block"
-						aria-label="Close Modal"
-					>
-						Close
-					</span>
-				</div>
-			</motion.div>
-		</div>,
-		document.body
+	// Handle backdrop click
+	const handleBackdropClick = useCallback(
+		(e) => {
+			if (e.target === e.currentTarget) {
+				onClose();
+			}
+		},
+		[onClose]
 	);
+
+	const handleChange = (e) => {
+		setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	};
+
+	const validateForm = () => {
+		if (!formData.name.trim()) return 'Please enter your name.';
+		if (!formData.email.trim()) return 'Please enter your email.';
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(formData.email))
+			return 'Please enter a valid email address.';
+		if (!formData.message.trim()) return 'Please describe your project.';
+		return null;
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setErrorMsg('');
+
+		const validationError = validateForm();
+		if (validationError) {
+			setErrorMsg(validationError);
+			return;
+		}
+
+		setStatus('loading');
+
+		try {
+			await emailjs.send(
+				EMAILJS_SERVICE_ID,
+				EMAILJS_TEMPLATE_ID,
+				{
+					from_name: formData.name,
+					from_email: formData.email,
+					subject: formData.subject,
+					message: formData.message,
+				},
+				EMAILJS_PUBLIC_KEY
+			);
+			setStatus('success');
+			setTimeout(() => {
+				setFormData({
+					name: '',
+					email: '',
+					subject: selectOptions[0],
+					message: '',
+				});
+				setStatus('idle');
+				onClose();
+			}, 2000);
+		} catch (err) {
+			setStatus('error');
+			setErrorMsg(
+				'Failed to send. Please try again or contact directly via email.'
+			);
+		}
+	};
+
+	const modalContent = (
+		<AnimatePresence>
+			<motion.div
+				key="hire-me-backdrop"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 0.2 }}
+				onClick={handleBackdropClick}
+				style={{
+					position: 'fixed',
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					zIndex: 9990,
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					padding: '1rem',
+					backgroundColor: 'rgba(0, 0, 0, 0.6)',
+					backdropFilter: 'blur(4px)',
+					WebkitBackdropFilter: 'blur(4px)',
+				}}
+			>
+				<motion.div
+					key="hire-me-modal"
+					initial={{ opacity: 0, scale: 0.92, y: 30 }}
+					animate={{ opacity: 1, scale: 1, y: 0 }}
+					exit={{ opacity: 0, scale: 0.92, y: 30 }}
+					transition={{ duration: 0.3, ease: 'easeOut' }}
+					style={{
+						width: '100%',
+						maxWidth: '540px',
+						maxHeight: '90vh',
+						display: 'flex',
+						flexDirection: 'column',
+						borderRadius: '1rem',
+						overflow: 'hidden',
+						boxShadow:
+							'0 25px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.05)',
+					}}
+					className="bg-secondary-light dark:bg-primary-dark"
+					onClick={(e) => e.stopPropagation()}
+				>
+					{/* Header */}
+					<div
+						className="border-b border-ternary-light dark:border-ternary-dark"
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							padding: '1.25rem 1.5rem',
+							flexShrink: 0,
+						}}
+					>
+						<h5 className="font-general-medium text-gray-900 dark:text-primary-light text-xl">
+							What project can I help you with?
+						</h5>
+						<button
+							onClick={onClose}
+							className="text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent"
+							style={{
+								background: 'none',
+								border: 'none',
+								cursor: 'pointer',
+								padding: '0.25rem',
+								display: 'flex',
+								alignItems: 'center',
+							}}
+						>
+							<FiX size={24} />
+						</button>
+					</div>
+
+					{/* Body — scrollable */}
+					<div
+						style={{
+							padding: '1.5rem',
+							overflowY: 'auto',
+							flex: 1,
+						}}
+					>
+						<form ref={formRef} onSubmit={handleSubmit}>
+							<div>
+								<input
+									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									id="hire-name"
+									name="name"
+									type="text"
+									required
+									placeholder="Name"
+									aria-label="Name"
+									value={formData.name}
+									onChange={handleChange}
+									disabled={status === 'loading'}
+								/>
+							</div>
+							<div style={{ marginTop: '1rem' }}>
+								<input
+									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									id="hire-email"
+									name="email"
+									type="email"
+									required
+									placeholder="Email"
+									aria-label="Email"
+									value={formData.email}
+									onChange={handleChange}
+									disabled={status === 'loading'}
+								/>
+							</div>
+							<div style={{ marginTop: '1rem' }}>
+								<select
+									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									id="hire-subject"
+									name="subject"
+									required
+									aria-label="Project Category"
+									value={formData.subject}
+									onChange={handleChange}
+									disabled={status === 'loading'}
+								>
+									{selectOptions.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</div>
+							<div style={{ marginTop: '1rem' }}>
+								<textarea
+									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									id="hire-message"
+									name="message"
+									rows="5"
+									aria-label="Details"
+									placeholder="Tell me about your project..."
+									value={formData.message}
+									onChange={handleChange}
+									disabled={status === 'loading'}
+								></textarea>
+							</div>
+
+							{/* Status messages */}
+							{errorMsg && status !== 'success' && (
+								<div
+									style={{
+										marginTop: '0.75rem',
+										display: 'flex',
+										alignItems: 'center',
+										gap: '0.5rem',
+										color: '#ef4444',
+										fontSize: '0.875rem',
+									}}
+									className="font-general-regular"
+								>
+									<FiAlertCircle style={{ flexShrink: 0 }} />
+									<span>{errorMsg}</span>
+								</div>
+							)}
+							{status === 'success' && (
+								<div
+									style={{
+										marginTop: '0.75rem',
+										display: 'flex',
+										alignItems: 'center',
+										gap: '0.5rem',
+										color: '#22c55e',
+										fontSize: '0.875rem',
+									}}
+									className="font-general-regular"
+								>
+									<FiCheck style={{ flexShrink: 0 }} />
+									<span>Request sent successfully! Closing...</span>
+								</div>
+							)}
+
+							<div style={{ marginTop: '1.25rem' }}>
+								<button
+									type="submit"
+									disabled={
+										status === 'loading' || status === 'success'
+									}
+									className="btn-accent font-general-medium"
+									style={{
+										padding: '0.625rem 1.5rem',
+										borderRadius: '0.5rem',
+										cursor:
+											status === 'loading' || status === 'success'
+												? 'not-allowed'
+												: 'pointer',
+										opacity:
+											status === 'loading' || status === 'success'
+												? 0.6
+												: 1,
+										display: 'inline-flex',
+										alignItems: 'center',
+										gap: '0.5rem',
+										border: 'none',
+									}}
+									aria-label="Submit Request"
+								>
+									{status === 'loading' && (
+										<FiLoader
+											style={{
+												animation: 'spin 1s linear infinite',
+											}}
+										/>
+									)}
+									{status === 'loading'
+										? 'Sending...'
+										: status === 'success'
+										? 'Sent ✓'
+										: 'Send Request'}
+								</button>
+							</div>
+						</form>
+					</div>
+
+					{/* Footer */}
+					<div
+						className="border-t border-ternary-light dark:border-ternary-dark"
+						style={{
+							padding: '1rem 1.5rem',
+							textAlign: 'right',
+							flexShrink: 0,
+						}}
+					>
+						<button
+							onClick={onClose}
+							className="font-general-medium bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-ternary-dark dark:text-secondary-light dark:hover:bg-secondary-dark"
+							style={{
+								padding: '0.5rem 1.5rem',
+								borderRadius: '0.5rem',
+								cursor: 'pointer',
+								border: 'none',
+								transition: 'all 0.2s ease',
+							}}
+						>
+							Close
+						</button>
+					</div>
+				</motion.div>
+			</motion.div>
+		</AnimatePresence>
+	);
+
+	return createPortal(modalContent, document.body);
 };
 
 export default HireMeModal;

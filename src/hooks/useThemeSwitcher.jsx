@@ -4,10 +4,7 @@ const useThemeSwitcher = () => {
 	const getInitialTheme = () => {
 		const stored = localStorage.getItem('theme');
 		if (stored === 'dark' || stored === 'light') return stored;
-		// Check system preference
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			return 'dark';
-		}
+		// Default to light theme for first-time visitors
 		return 'light';
 	};
 

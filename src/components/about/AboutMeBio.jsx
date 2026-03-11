@@ -18,18 +18,18 @@ const AboutMeBio = () => {
 	const { aboutMe } = useContext(AboutMeContext);
 
 	return (
-		<div className="block sm:flex sm:gap-14 mt-10 sm:mt-16">
+		<div className="block sm:flex sm:gap-10 mt-10 sm:mt-16 items-start">
 			{/* Profile Image */}
-			<div className="w-full sm:w-1/3 mb-8 sm:mb-0 flex flex-col items-center sm:items-start">
+			<div className="w-full sm:w-1/4 mb-8 sm:mb-0 flex flex-col items-center sm:items-start shrink-0">
 				<img
 					src={profileImage}
-					className="profile-image w-64 sm:w-full max-w-xs"
+					className="profile-image w-56 sm:w-full rounded-2xl object-cover"
 					alt="Raghav"
 				/>
 			</div>
 
 			{/* Bio + Skills */}
-			<div className="w-full sm:w-2/3 text-left min-w-0">
+			<div className="w-full sm:w-3/4 text-left min-w-0">
 				{aboutMe.map((bio) => (
 					<p
 						className="mb-4 text-gray-800 dark:text-gray-200 text-lg leading-relaxed font-general-regular"

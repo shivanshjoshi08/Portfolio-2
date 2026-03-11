@@ -44,7 +44,7 @@ const AppBanner = () => {
 				>
 					<a
 						download="raghav-resume.pdf"
-						href="/files/kamal-resume.pdf"
+						href="/files/raghav-resume.pdf"
 						className="font-general-medium flex justify-center items-center w-40 sm:w-48 mt-10 mb-6 sm:mb-0 text-lg border-2 border-accent dark:border-accent py-2.5 sm:py-3 shadow-lg rounded-lg bg-accent-light dark:bg-ternary-dark focus:ring-1 focus:ring-accent hover:bg-accent text-gray-600 dark:text-gray-200 hover:text-white duration-300"
 						aria-label="Download Resume"
 					>
