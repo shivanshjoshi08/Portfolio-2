@@ -1,0 +1,530 @@
+/*== 
+ * Portfolio CSS — Video & Photo Editor
+*/
+
+html,
+body {
+	overflow-x: hidden;
+	max-width: 100vw;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* ===== Global Theme Transition ===== */
+*,
+*::before,
+*::after {
+	transition: background-color 0.35s ease, color 0.25s ease, border-color 0.35s ease, box-shadow 0.3s ease;
+}
+
+/* Override global transition for modal overlay so backdrop appears instantly */
+.modal-overlay {
+	transition: none !important;
+}
+
+
+body {
+	font-family: 'GeneralSans-Variable';
+}
+
+/* ===== Fonts ===== */
+@font-face {
+	font-family: 'GeneralSans-Variable';
+	src: url('../fonts/GeneralSans-Variable.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Variable.woff') format('woff'),
+		url('../fonts/GeneralSans-Variable.ttf') format('truetype');
+	font-weight: 200 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-variable {
+	font-family: 'GeneralSans-Variable';
+}
+
+@font-face {
+	font-family: 'GeneralSans-VariableItalic';
+	src: url('../fonts/GeneralSans-VariableItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-VariableItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-VariableItalic.ttf') format('truetype');
+	font-weight: 200 700;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-variable-italic {
+	font-family: 'GeneralSans-VariableItalic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Extralight';
+	src: url('../fonts/GeneralSans-Extralight.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Extralight.woff') format('woff'),
+		url('../fonts/GeneralSans-Extralight.ttf') format('truetype');
+	font-weight: 200;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-extralight {
+	font-family: 'GeneralSans-Extralight';
+}
+
+@font-face {
+	font-family: 'GeneralSans-ExtralightItalic';
+	src: url('../fonts/GeneralSans-ExtralightItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-ExtralightItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-ExtralightItalic.ttf') format('truetype');
+	font-weight: 200;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-extralight-italic {
+	font-family: 'GeneralSans-ExtralightItalic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Light';
+	src: url('../fonts/GeneralSans-Light.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Light.woff') format('woff'),
+		url('../fonts/GeneralSans-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-light {
+	font-family: 'GeneralSans-Light';
+}
+
+@font-face {
+	font-family: 'GeneralSans-LightItalic';
+	src: url('../fonts/GeneralSans-LightItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-LightItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-light-italic {
+	font-family: 'GeneralSans-LightItalic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Regular';
+	src: url('../fonts/GeneralSans-Regular.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Regular.woff') format('woff'),
+		url('../fonts/GeneralSans-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-regular {
+	font-family: 'GeneralSans-Regular';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Italic';
+	src: url('../fonts/GeneralSans-Italic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Italic.woff') format('woff'),
+		url('../fonts/GeneralSans-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-italic {
+	font-family: 'GeneralSans-Italic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Medium';
+	src: url('../fonts/GeneralSans-Medium.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Medium.woff') format('woff'),
+		url('../fonts/GeneralSans-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-medium {
+	font-family: 'GeneralSans-Medium';
+}
+
+@font-face {
+	font-family: 'GeneralSans-MediumItalic';
+	src: url('../fonts/GeneralSans-MediumItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-MediumItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-medium-italic {
+	font-family: 'GeneralSans-MediumItalic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Semibold';
+	src: url('../fonts/GeneralSans-Semibold.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Semibold.woff') format('woff'),
+		url('../fonts/GeneralSans-Semibold.ttf') format('truetype');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-semibold {
+	font-family: 'GeneralSans-Semibold';
+}
+
+@font-face {
+	font-family: 'GeneralSans-SemiboldItalic';
+	src: url('../fonts/GeneralSans-SemiboldItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-SemiboldItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-SemiboldItalic.ttf') format('truetype');
+	font-weight: 600;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-semibold-italic {
+	font-family: 'GeneralSans-SemiboldItalic';
+}
+
+@font-face {
+	font-family: 'GeneralSans-Bold';
+	src: url('../fonts/GeneralSans-Bold.woff2') format('woff2'),
+		url('../fonts/GeneralSans-Bold.woff') format('woff'),
+		url('../fonts/GeneralSans-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+.font-general-bold {
+	font-family: 'GeneralSans-Bold';
+}
+
+@font-face {
+	font-family: 'GeneralSans-BoldItalic';
+	src: url('../fonts/GeneralSans-BoldItalic.woff2') format('woff2'),
+		url('../fonts/GeneralSans-BoldItalic.woff') format('woff'),
+		url('../fonts/GeneralSans-BoldItalic.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: italic;
+}
+
+.font-general-bold-italic {
+	font-family: 'GeneralSans-BoldItalic';
+}
+
+/* ===== Hire Me Button — Clean Outline Style ===== */
+.hire-btn {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.55rem 1.5rem;
+	border: 1.5px solid #f59e0b;
+	border-radius: 0.5rem;
+	color: #f59e0b;
+	background: transparent;
+	cursor: pointer;
+	letter-spacing: 0.02em;
+	transition: all 0.3s ease;
+}
+
+.hire-btn:hover {
+	background: #f59e0b;
+	color: #fff;
+	box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+}
+
+.dark .hire-btn {
+	border-color: #f59e0b;
+	color: #f59e0b;
+}
+
+.dark .hire-btn:hover {
+	background: #f59e0b;
+	color: #fff;
+	box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+}
+
+/* ===== Hero Section ===== */
+.hero-visual {
+	position: relative;
+	background: linear-gradient(135deg, #2D2D2D 0%, #3a3a3a 50%, #4a4a4a 100%);
+	border-radius: 1.25rem;
+	overflow: hidden;
+	min-height: 320px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dark .hero-visual {
+	background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.hero-visual::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		repeating-linear-gradient(0deg,
+			transparent,
+			transparent 28px,
+			rgba(245, 158, 11, 0.06) 28px,
+			rgba(245, 158, 11, 0.06) 30px);
+	pointer-events: none;
+}
+
+.hero-play-icon {
+	width: 72px;
+	height: 72px;
+	border: 2px solid rgba(245, 158, 11, 0.5);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	animation: pulse-ring 3s ease-in-out infinite;
+}
+
+.hero-play-icon::before {
+	content: '';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 12px 0 12px 20px;
+	border-color: transparent transparent transparent #f59e0b;
+	margin-left: 4px;
+}
+
+.hero-play-icon::after {
+	content: '';
+	position: absolute;
+	inset: -14px;
+	border: 1px solid rgba(245, 158, 11, 0.2);
+	border-radius: 50%;
+	animation: pulse-ring 3s ease-in-out infinite 0.6s;
+}
+
+@keyframes pulse-ring {
+
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	50% {
+		transform: scale(1.06);
+		opacity: 0.6;
+	}
+}
+
+.hero-film-strip {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 36px;
+	display: flex;
+	gap: 4px;
+	padding: 6px 8px;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-film-frame {
+	flex: 1;
+	background: rgba(245, 158, 11, 0.1);
+	border-radius: 3px;
+	border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.hero-glow {
+	position: absolute;
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+	top: -30px;
+	right: -30px;
+	pointer-events: none;
+}
+
+/* ===== Glass Effect ===== */
+.glass-nav {
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background: rgba(250, 249, 247, 0.85);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .glass-nav {
+	background: rgba(15, 23, 42, 0.92);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ===== Project Card Overlay ===== */
+.project-card-image {
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	width: 100%;
+}
+
+.project-card-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	display: flex;
+	align-items: flex-end;
+	padding: 1.25rem;
+	border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.project-card:hover .project-card-overlay {
+	opacity: 1;
+}
+
+.project-card {
+	transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+.dark .project-card:hover {
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Accent Button (filled) ===== */
+.btn-accent {
+	background: #f59e0b;
+	color: #fff;
+	border: none;
+	border-radius: 0.5rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-accent:hover {
+	background: #d97706;
+	transform: translateY(-1px);
+	box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* ===== Section Titles ===== */
+.section-title-underline {
+	display: inline-block;
+	position: relative;
+}
+
+.section-title-underline::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50px;
+	height: 2.5px;
+	background: #f59e0b;
+	border-radius: 2px;
+}
+
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+	transition: transform 0.3s ease, background-color 0.35s ease;
+}
+
+.theme-toggle:hover {
+	transform: rotate(15deg);
+}
+
+/* ===== Profile Image ===== */
+.profile-image {
+	border-radius: 1rem;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+	border: 2px solid rgba(245, 158, 11, 0.2);
+}
+
+.dark .profile-image {
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+	border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* ===== About Section Skills Chip ===== */
+.skills-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	max-width: 100%;
+}
+
+.skill-chip {
+	display: inline-block;
+	padding: 0.4rem 1rem;
+	border-radius: 999px;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	border: 1px solid rgba(245, 158, 11, 0.25);
+	color: #f59e0b;
+	background: rgba(245, 158, 11, 0.06);
+}
+
+.dark .skill-chip {
+	background: rgba(245, 158, 11, 0.1);
+	border-color: rgba(245, 158, 11, 0.25);
+	color: #fbbf24;
+}
+
+/* ===== Scroll to top ===== */
+.scrollToTop {
+	background: #f59e0b;
+	color: #fff;
+	position: fixed;
+	width: 100%;
+	align-items: center;
+	height: 20px;
+	justify-content: center;
+	z-index: 999;
+	cursor: pointer;
+	animation: fadeIn 0.3s;
+	transition: opacity 0.4s;
+	opacity: 0.9;
+}
+
+.scrollToTop:hover {
+	opacity: 1;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0.5;
+	}
+}
+
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+	color: #f59e0b;
+}
