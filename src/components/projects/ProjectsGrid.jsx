@@ -59,30 +59,33 @@ const ProjectsGrid = () => {
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 gap-6 sm:gap-8">
 				{selectProject
 					? selectProjectsByCategory.map((project) => (
-						<ProjectSingle
-							title={project.title}
-							category={project.category}
-							image={project.img}
-							key={project.id}
-						/>
-					))
+							<ProjectSingle
+								title={project.title}
+								category={project.category}
+								image={project.img}
+								videoUrl={project.videoUrl}
+								key={project.id}
+							/>
+					  ))
 					: searchProject
 						? searchProjectsByTitle.map((project) => (
-							<ProjectSingle
-								title={project.title}
-								category={project.category}
-								image={project.img}
-								key={project.id}
-							/>
-						))
+								<ProjectSingle
+									title={project.title}
+									category={project.category}
+									image={project.img}
+									videoUrl={project.videoUrl}
+									key={project.id}
+								/>
+						  ))
 						: projects.map((project) => (
-							<ProjectSingle
-								title={project.title}
-								category={project.category}
-								image={project.img}
-								key={project.id}
-							/>
-						))
+								<ProjectSingle
+									title={project.title}
+									category={project.category}
+									image={project.img}
+									videoUrl={project.videoUrl}
+									key={project.id}
+								/>
+						  ))
 				}
 			</div>
 		</section>

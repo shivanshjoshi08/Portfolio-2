@@ -528,3 +528,146 @@ body {
 .gradient-text {
 	color: #f59e0b;
 }
+
+/* ===== Video Modal ===== */
+.video-modal-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	transition: none !important;
+}
+
+.video-modal-content {
+	position: relative;
+	width: 100%;
+	max-width: 900px;
+	background: #1a1a2e;
+	border-radius: 1rem;
+	overflow: hidden;
+	box-shadow:
+		0 0 0 1px rgba(245, 158, 11, 0.15),
+		0 25px 60px rgba(0, 0, 0, 0.6),
+		0 0 80px rgba(245, 158, 11, 0.08);
+}
+
+.video-modal-close {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	z-index: 10;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	color: #fff;
+	font-size: 1.25rem;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.video-modal-close:hover {
+	background: rgba(245, 158, 11, 0.8);
+	border-color: #f59e0b;
+	transform: rotate(90deg);
+}
+
+.video-modal-title {
+	padding: 1rem 1.25rem 0.5rem;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.video-modal-title h3 {
+	color: #fff;
+	font-family: 'GeneralSans-Medium';
+	font-size: 1.15rem;
+	margin: 0;
+	letter-spacing: 0.01em;
+}
+
+.video-modal-player {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	background: #000;
+}
+
+.video-modal-iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+/* ===== Play Overlay on Project Cards ===== */
+.video-play-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.25);
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	z-index: 2;
+}
+
+.project-card:hover .video-play-overlay {
+	opacity: 1;
+}
+
+.video-play-button {
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(245, 158, 11, 0.9);
+	border-radius: 50%;
+	box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover .video-play-button {
+	transform: scale(1.1);
+	box-shadow: 0 6px 28px rgba(245, 158, 11, 0.5);
+}
+
+.video-play-icon {
+	color: #fff;
+	font-size: 1.5rem;
+	margin-left: 3px;
+}
+
+/* ===== Responsive adjustments for video modal ===== */
+@media (max-width: 640px) {
+	.video-modal-overlay {
+		padding: 0.75rem;
+	}
+	
+	.video-modal-content {
+		border-radius: 0.75rem;
+	}
+
+	.video-play-button {
+		width: 44px;
+		height: 44px;
+	}
+
+	.video-play-icon {
+		font-size: 1.15rem;
+	}
+}
