@@ -1,7 +1,7 @@
 const selectOptions = [
-	'Wedding Reels',
-	'Instagram Reels',
-	'Long Video Edits',
+	'Marketing',
+	'Finance',
+	'Storytelling',
 ];
 
 const ProjectsFilter = ({ setSelectProject }) => {
