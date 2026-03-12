@@ -12,9 +12,9 @@ module.exports = {
 				'ternary-light': '#EDEAE5',
 
 				// Dark theme — deep blue-slate for better contrast
-				'primary-dark': '#0f172a',
-				'secondary-dark': '#1e293b',
-				'ternary-dark': '#334155',
+				'primary-dark': '#0e0c0a',    // warm near-black
+				'secondary-dark': '#1a1714',  // warm dark surface
+				'ternary-dark': '#2c2620',    // warm card/border tone
 
 				// Accent — warm amber
 				'accent': '#f59e0b',

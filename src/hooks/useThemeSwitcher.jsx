@@ -1,20 +1,13 @@
 import { useEffect, useState } from 'react';
 
 const useThemeSwitcher = () => {
-	const getInitialTheme = () => {
-		const stored = localStorage.getItem('theme');
-		if (stored === 'dark' || stored === 'light') return stored;
-		// Default to light theme for first-time visitors
-		return 'light';
-	};
-
-	const [theme, setTheme] = useState(getInitialTheme);
+	const [theme, setTheme] = useState('light');
 
 	useEffect(() => {
 		const root = window.document.documentElement;
 		root.classList.remove('dark', 'light');
 		root.classList.add(theme);
-		localStorage.setItem('theme', theme);
+		// ← removed localStorage.setItem, so nothing is saved
 	}, [theme]);
 
 	return [theme, setTheme];
