@@ -45,23 +45,16 @@ export const projectsData = [
 	},
 	{
 		id: 6,
-		title: 'Background Change',
-		category: 'Storytelling',
-		img: WebImage1,
-		videoUrl: 'https://drive.google.com/file/d/17pvMl2Rjq_6cA38zFS9iZULq7rgTSEkg/preview',
-	},
-	{
-		id: 7,
 		title: 'Storytelling',
 		category: 'Storytelling',
 		img: MobileImage1,
 		videoUrl: 'https://drive.google.com/file/d/17vP08XWMvgf1AiVzFwOya7T6l9JqKSya/preview',
 	},
 	{
-		id: 8,
+		id: 7,
 		title: 'Supply Chain Marketers',
 		category: 'Marketing',
-		img: WebImage2,
+		img: WebImage1,
 		videoUrl: 'https://drive.google.com/file/d/17mQNW1oFPpJu1nFzZmH-dCSh9U3SYBVb/preview',
 	},
 ];
