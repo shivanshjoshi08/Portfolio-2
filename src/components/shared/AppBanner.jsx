@@ -26,7 +26,7 @@ const AppBanner = () => {
 					transition={{ ease: 'easeOut', duration: 0.7, delay: 0.25 }}
 				className="font-general-medium mt-4 text-lg md:text-xl lg:text-2xl text-center sm:text-left leading-relaxed text-gray-500"
 				>
-					Video Editor & Social Media Manager
+					Video Editor & Social Media Executive
 				</motion.p>
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
