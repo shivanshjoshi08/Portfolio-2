@@ -18,7 +18,7 @@ const ProjectSingle = lazy(() => import('./pages/ProjectSingle.jsx'));
 function App() {
 	return (
 		<AnimatePresence>
-			<div className="bg-secondary-light dark:bg-primary-dark min-h-screen overflow-x-hidden relative">
+			<div className="bg-secondary-light min-h-screen overflow-x-hidden relative">
 				<LightLeaks />
 				<CinematicCursor />
 				<Router>

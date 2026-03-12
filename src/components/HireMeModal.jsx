@@ -155,12 +155,12 @@ const HireMeModal = ({ onClose, onRequest }) => {
 						boxShadow:
 							'0 25px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.05)',
 					}}
-					className="bg-secondary-light dark:bg-primary-dark"
+				className="bg-secondary-light\"
 					onClick={(e) => e.stopPropagation()}
 				>
 					{/* Header */}
 					<div
-						className="border-b border-ternary-light dark:border-ternary-dark"
+					className="border-b border-ternary-light\"
 						style={{
 							display: 'flex',
 							justifyContent: 'space-between',
@@ -169,12 +169,12 @@ const HireMeModal = ({ onClose, onRequest }) => {
 							flexShrink: 0,
 						}}
 					>
-						<h5 className="font-general-medium text-gray-900 dark:text-primary-light text-xl">
+					<h5 className="font-general-medium text-gray-900 text-xl\">
 							What project can I help you with?
 						</h5>
 						<button
 							onClick={onClose}
-							className="text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-accent"
+						className="text-gray-500 hover:text-accent\"
 							style={{
 								background: 'none',
 								border: 'none',
@@ -199,7 +199,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 						<form ref={formRef} onSubmit={handleSubmit}>
 							<div>
 								<input
-									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+							className="w-full px-5 py-2.5 border rounded-lg text-md bg-secondary-light text-gray-900 focus:ring-1 focus:ring-accent focus:border-accent\"
 									id="hire-name"
 									name="name"
 									type="text"
@@ -213,7 +213,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 							</div>
 							<div style={{ marginTop: '1rem' }}>
 								<input
-									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+								className="w-full px-5 py-2.5 border rounded-lg text-md bg-secondary-light text-gray-900 focus:ring-1 focus:ring-accent focus:border-accent\"
 									id="hire-email"
 									name="email"
 									type="email"
@@ -227,7 +227,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 							</div>
 							<div style={{ marginTop: '1rem' }}>
 								<select
-									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									className="w-full px-5 py-2.5 border rounded-lg text-md bg-secondary-light text-gray-900 focus:ring-1 focus:ring-accent focus:border-accent\"
 									id="hire-subject"
 									name="subject"
 									required
@@ -243,7 +243,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 							</div>
 							<div style={{ marginTop: '1rem' }}>
 								<textarea
-									className="w-full px-5 py-2.5 border dark:border-secondary-dark rounded-lg text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+									className="w-full px-5 py-2.5 border rounded-lg text-md bg-secondary-light text-gray-900 focus:ring-1 focus:ring-accent focus:border-accent\"
 									id="hire-message"
 									name="message"
 									rows="5"
@@ -333,7 +333,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 
 					{/* Footer */}
 					<div
-						className="border-t border-ternary-light dark:border-ternary-dark"
+					className="border-t border-ternary-light\"
 						style={{
 							padding: '1rem 1.5rem',
 							textAlign: 'right',
@@ -342,7 +342,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
 					>
 						<button
 							onClick={onClose}
-							className="font-general-medium bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-ternary-dark dark:text-secondary-light dark:hover:bg-secondary-dark"
+						className="font-general-medium bg-gray-200 text-gray-900 hover:bg-gray-300\"
 							style={{
 								padding: '0.5rem 1.5rem',
 								borderRadius: '0.5rem',

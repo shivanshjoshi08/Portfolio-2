@@ -26,7 +26,6 @@ body {
 	transition: none !important;
 }
 
-
 body {
 	font-family: 'GeneralSans-Variable';
 }
@@ -248,17 +247,6 @@ body {
 	box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
 }
 
-.dark .hire-btn {
-	border-color: #f59e0b;
-	color: #f59e0b;
-}
-
-.dark .hire-btn:hover {
-	background: #f59e0b;
-	color: #fff;
-	box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
-}
-
 /* ===== Hero Section ===== */
 .hero-visual {
 	position: relative;
@@ -269,10 +257,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.dark .hero-visual {
-	background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
 }
 
 .hero-visual::before {
@@ -371,11 +355,6 @@ body {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.dark .glass-nav {
-	background: rgba(15, 23, 42, 0.92);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 /* ===== Project Card Overlay ===== */
 .project-card-image {
 	aspect-ratio: 16 / 10;
@@ -406,10 +385,6 @@ body {
 .project-card:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
-}
-
-.dark .project-card:hover {
-	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== Accent Button (filled) ===== */
@@ -463,11 +438,6 @@ body {
 	border: 2px solid rgba(245, 158, 11, 0.2);
 }
 
-.dark .profile-image {
-	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-	border-color: rgba(245, 158, 11, 0.3);
-}
-
 /* ===== About Section Skills Chip ===== */
 .skills-container {
 	display: flex;
@@ -485,12 +455,6 @@ body {
 	border: 1px solid rgba(245, 158, 11, 0.25);
 	color: #f59e0b;
 	background: rgba(245, 158, 11, 0.06);
-}
-
-.dark .skill-chip {
-	background: rgba(245, 158, 11, 0.1);
-	border-color: rgba(245, 158, 11, 0.25);
-	color: #fbbf24;
 }
 
 /* ===== Scroll to top ===== */
@@ -530,19 +494,7 @@ body {
 }
 
 /* ===== Video Modal ===== */
-.video-modal-overlay {
-	position: fixed;
-	inset: 0;
-	z-index: 200;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 1.5rem;
-	background: rgba(14, 12, 10, 0.85);
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
-	transition: none !important;
-}
+
 
 .video-modal-content {
 	position: relative;

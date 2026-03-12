@@ -8,9 +8,9 @@ const ContactForm = () => {
 					onSubmit={(e) => {
 						e.preventDefault();
 					}}
-					className="max-w-xl m-4 p-6 sm:p-10 bg-secondary-light dark:bg-secondary-dark rounded-xl shadow-xl text-left"
+				className="max-w-xl m-4 p-6 sm:p-10 bg-secondary-light rounded-xl shadow-xl text-left\"
 				>
-					<p className="font-general-medium text-gray-900 dark:text-primary-light text-2xl mb-8 section-title-underline inline-block">
+				<p className="font-general-medium text-gray-900 text-2xl mb-8 section-title-underline inline-block\">
 						Contact Form
 					</p>
 					<FormInput
@@ -43,13 +43,13 @@ const ContactForm = () => {
 
 					<div className="mt-6">
 						<label
-							className="block text-lg text-gray-900 dark:text-primary-light mb-2"
+						className="block text-lg text-gray-900 mb-2\"
 							htmlFor="message"
 						>
 							Message
 						</label>
 						<textarea
-							className="w-full px-5 py-2.5 border border-gray-300 dark:border-primary-dark border-opacity-50 text-gray-900 dark:text-secondary-light bg-ternary-light dark:bg-ternary-dark rounded-lg shadow-sm text-md focus:ring-1 focus:ring-accent focus:border-accent"
+						className="w-full px-5 py-2.5 border border-gray-300 border-opacity-50 text-gray-900 bg-ternary-light rounded-lg shadow-sm text-md focus:ring-1 focus:ring-accent focus:border-accent\"
 							id="message"
 							name="message"
 							cols="14"

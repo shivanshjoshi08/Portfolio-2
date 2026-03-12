@@ -29,7 +29,7 @@ const ProjectSingle = ({ title, category, image, videoUrl }) => {
 					aria-label={`Play video: ${title}`}
 					className="h-full block cursor-pointer"
 				>
-					<div className="project-card h-full flex flex-col rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light dark:bg-secondary-dark overflow-hidden">
+				<div className="project-card h-full flex flex-col rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light overflow-hidden\">
 						<div className="relative overflow-hidden shrink-0 group">
 							<img
 								src={image}
@@ -49,10 +49,10 @@ const ProjectSingle = ({ title, category, image, videoUrl }) => {
 							</div>
 						</div>
 						<div className="text-center px-4 py-5 flex-grow flex flex-col justify-center">
-							<p className="font-general-medium text-lg md:text-xl text-ternary-dark dark:text-ternary-light mb-1">
+						<p className="font-general-medium text-lg md:text-xl text-ternary-dark mb-1\">
 								{title}
 							</p>
-							<span className="text-sm text-gray-400 dark:text-gray-500 font-general-regular">
+						<span className="text-sm text-gray-400 font-general-regular\">
 								{category}
 							</span>
 						</div>

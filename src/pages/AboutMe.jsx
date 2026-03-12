@@ -14,7 +14,7 @@ const About = () => {
 				transition={{ ease: 'easeOut', duration: 0.6, delay: 0.1 }}
 				className="container mx-auto pt-10 sm:pt-16"
 			>
-				<h1 className="font-general-bold text-3xl sm:text-4xl text-center text-gray-900 dark:text-gray-100 section-title-underline">
+				<h1 className="font-general-bold text-3xl sm:text-4xl text-center text-gray-900 section-title-underline">
 					About Me
 				</h1>
 			</motion.div>

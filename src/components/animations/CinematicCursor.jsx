@@ -75,7 +75,7 @@ const CinematicCursor = () => {
 
 			{/* Soft cinematic film burn trailing glow */}
 			<motion.div
-				className="fixed top-0 left-0 w-16 h-16 rounded-full pointer-events-none z-[9998] border border-accent/30 bg-accent/10 dark:bg-accent/20 backdrop-blur-[1px] hidden sm:block"
+			className="fixed top-0 left-0 w-16 h-16 rounded-full pointer-events-none z-[9998] border border-accent/30 bg-accent/10 backdrop-blur-[1px] hidden sm:block\"
 				style={{
 					x: trailingX,
 					y: trailingY,

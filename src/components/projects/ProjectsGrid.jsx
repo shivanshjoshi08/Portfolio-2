@@ -18,31 +18,31 @@ const ProjectsGrid = () => {
 	return (
 		<section className="py-5 sm:py-10 mt-5 sm:mt-10">
 			<div className="text-center">
-				<p className="font-general-semibold text-2xl sm:text-4xl mb-2 text-ternary-dark dark:text-ternary-light section-title-underline">
+			<p className="font-general-semibold text-2xl sm:text-4xl mb-2 text-ternary-dark section-title-underline\">
 					Projects Portfolio
 				</p>
 			</div>
 
 			<div className="mt-12 sm:mt-16">
 				<h3
-					className="font-general-regular text-center text-secondary-dark dark:text-ternary-light text-md sm:text-xl mb-4"
+				className="font-general-regular text-center text-secondary-dark text-md sm:text-xl mb-4\"
 				>
 					Search projects by title or filter by category
 				</h3>
 				<div
-					className="flex justify-between border-b border-primary-light dark:border-secondary-dark pb-3 gap-3"
+				className="flex justify-between border-b border-primary-light pb-3 gap-3\"
 				>
 					<div className="flex justify-between gap-2">
 						<span
-							className="hidden sm:block bg-primary-light dark:bg-ternary-dark p-2.5 shadow-sm rounded-xl cursor-pointer"
+						className="hidden sm:block bg-primary-light p-2.5 shadow-sm rounded-xl cursor-pointer\"
 						>
-							<FiSearch className="text-ternary-dark dark:text-ternary-light w-5 h-5" />
+							<FiSearch className="text-ternary-dark w-5 h-5\" />
 						</span>
 						<input
 							onChange={(e) => {
 								setSearchProject(e.target.value);
 							}}
-							className="font-general-medium pl-3 pr-1 sm:px-4 py-2 border border-gray-200 dark:border-secondary-dark rounded-lg text-sm sm:text-md bg-secondary-light dark:bg-ternary-dark text-gray-900 dark:text-ternary-light focus:ring-1 focus:ring-accent focus:border-accent"
+							className="font-general-medium pl-3 pr-1 sm:px-4 py-2 border border-gray-200 rounded-lg text-sm sm:text-md bg-secondary-light text-gray-900 focus:ring-1 focus:ring-accent focus:border-accent\"
 							id="name"
 							name="name"
 							type="search"

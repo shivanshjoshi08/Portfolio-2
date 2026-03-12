@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
-	darkMode: 'class',
 	theme: {
 		extend: {
 			colors: {
@@ -10,11 +9,6 @@ module.exports = {
 				'primary-light': '#F5F3EF',
 				'secondary-light': '#FAF9F7',
 				'ternary-light': '#EDEAE5',
-
-				// Dark theme — Cinematic Warm
-				'primary-dark': '#0e0c0a',
-				'secondary-dark': '#1a1714',
-				'ternary-dark': '#2c2620',
 
 				// Accent — warm amber
 				'accent': '#f59e0b',
