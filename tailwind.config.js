@@ -11,10 +11,10 @@ module.exports = {
 				'secondary-light': '#FAF9F7',
 				'ternary-light': '#EDEAE5',
 
-				// Dark theme — deep blue-slate for better contrast
-				'primary-dark': '#0e0c0a',    // warm near-black
-				'secondary-dark': '#1a1714',  // warm dark surface
-				'ternary-dark': '#2c2620',    // warm card/border tone
+				// Dark theme — Cinematic Warm
+				'primary-dark': '#0e0c0a',
+				'secondary-dark': '#1a1714',
+				'ternary-dark': '#2c2620',
 
 				// Accent — warm amber
 				'accent': '#f59e0b',

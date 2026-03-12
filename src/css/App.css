@@ -538,7 +538,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 1.5rem;
-	background: rgba(0, 0, 0, 0.85);
+	background: rgba(14, 12, 10, 0.85);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 	transition: none !important;
