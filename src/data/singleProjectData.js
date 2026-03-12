@@ -5,6 +5,8 @@ import Image3 from '../images/mobile-project-2.jpg';
 import Image4 from '../images/mobile-project-1.jpg';
 import Image5 from '../images/web-project-1.jpg';
 import Image6 from '../images/ui-project-2.jpg';
+import FevicolImage from '../images/fevicol.jpg';
+
 // Import icons
 import {
 	FiInstagram,
@@ -12,7 +14,7 @@ import {
 } from 'react-icons/fi';
 
 export const singleProjectData = {
-	category: 'Instagram Reels',
+	category: 'Marketing',
 	ProjectHeader: {
 		title: 'Marketing Explanation Reel',
 		publishDate: 'Jan 15, 2024',
@@ -51,7 +53,7 @@ export const singleProjectData = {
 			{
 				id: 3,
 				title: 'Category',
-				details: 'Instagram Reels',
+				details: 'Marketing',
 			},
 			{
 				id: 4,
@@ -130,7 +132,7 @@ export const singleProjectData = {
 			{
 				id: 4,
 				title: 'Fevicol',
-				img: Image3,
+				img: FevicolImage,
 			},
 		],
 	},
