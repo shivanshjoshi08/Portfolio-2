@@ -12,7 +12,7 @@ export const projectsData = [
 		id: 1,
 		title: 'Marketing Explanation Reel',
 		category: 'Marketing',
-		img: WebImage2,
+		img: MobileImage1,
 		videoUrl: 'https://drive.google.com/file/d/1S9z1VWAtnd_NEQR-pgwRYk71qzL9p1Cb/preview',
 	},
 	{
@@ -47,7 +47,7 @@ export const projectsData = [
 		id: 6,
 		title: 'Storytelling',
 		category: 'Storytelling',
-		img: MobileImage1,
+		img: WebImage2,
 		videoUrl: 'https://drive.google.com/file/d/17vP08XWMvgf1AiVzFwOya7T6l9JqKSya/preview',
 	},
 	{
